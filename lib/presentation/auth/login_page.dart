@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:point_of_sale_flutter/data/models/response/auth_response_model.dart';
+import 'package:point_of_sale_flutter/data/datasources/auth_local_datasource.dart';
 import 'package:point_of_sale_flutter/presentation/home/dashboard_page.dart';
 
 import '../../core/assets/assets.gen.dart';
@@ -83,6 +83,7 @@ class _LoginPageState extends State<LoginPage> {
               state.maybeWhen(
                 orElse: () {},
                 success: (AuthResponseModel) {
+                  AuthLocalDatasource().saveAuthData(AuthResponseModel);
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
