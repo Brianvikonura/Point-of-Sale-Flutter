@@ -1,0 +1,7 @@
+# Rename this file to variables.dart
+
+class Variables {
+  static const String baseUrl = 'http://127.0.0.1:8000'; # add your base URL here
+  static const String name = 'Restaurant POS';
+  static const String apiVersion = 'v1';
+}
