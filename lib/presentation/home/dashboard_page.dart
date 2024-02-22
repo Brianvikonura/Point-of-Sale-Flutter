@@ -10,15 +10,16 @@ class DashboardPage extends StatefulWidget {
 }
 
 class _DashboardPageState extends State<DashboardPage> {
-  
   User? user;
 
   @override
   void initState() {
     AuthLocalDatasource().getAuthData().then((value) {
-      setState(() {
-        user = value.user;
-      });
+      if (value != null) {
+        setState(() {
+          user = value.user;
+        });
+      }
     });
     super.initState();
   }
@@ -29,7 +30,7 @@ class _DashboardPageState extends State<DashboardPage> {
       appBar: AppBar(
         title: const Text('Dashboard'),
       ),
-      body: const Center(
+      body: Center(
         child: Column(
           children: [
             const Text('Welcome to Dashboard'),
