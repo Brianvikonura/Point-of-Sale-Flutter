@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:point_of_sale_flutter/data/datasources/auth_local_datasource.dart';
 import 'package:point_of_sale_flutter/data/datasources/auth_remote_datasource.dart';
 import 'package:point_of_sale_flutter/presentation/auth/login_page.dart';
+import 'package:point_of_sale_flutter/presentation/home/dashboard_page.dart';
 
 import 'core/constants/colors.dart';
 import 'presentation/auth/bloc/login/login_bloc.dart';
@@ -40,7 +42,29 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-        home: const LoginPage(),
+        home: FutureBuilder<bool>(
+            future: AuthLocalDatasource().isAuthDataExists(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Scaffold(
+                  body: Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                );
+              }
+              if (snapshot.hasData) {
+                if (snapshot.data!) {
+                  return const DashboardPage();
+                } else {
+                  return const LoginPage();
+                }
+              }
+              return const Scaffold(
+                body: Center(
+                  child: Text('Something went wrong'),
+                ),
+              );
+            }),
       ),
     );
   }
