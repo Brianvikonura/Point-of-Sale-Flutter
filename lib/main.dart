@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:point_of_sale_flutter/data/datasources/auth_local_datasource.dart';
 import 'package:point_of_sale_flutter/data/datasources/auth_remote_datasource.dart';
+import 'package:point_of_sale_flutter/presentation/auth/bloc/logout/logout_bloc.dart';
 import 'package:point_of_sale_flutter/presentation/auth/login_page.dart';
 import 'package:point_of_sale_flutter/presentation/home/dashboard_page.dart';
 
@@ -19,8 +20,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => LoginBloc(AuthRemoteDatasource()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => LoginBloc(AuthRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) => LogoutBloc(AuthRemoteDatasource()),
+        ),
+      ],
       child: MaterialApp(
         title: 'Restaurant POS',
         theme: ThemeData(
