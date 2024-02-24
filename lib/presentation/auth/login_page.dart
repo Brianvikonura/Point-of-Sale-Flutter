@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:point_of_sale_flutter/data/datasources/auth_local_datasource.dart';
-import 'package:point_of_sale_flutter/presentation/home/dashboard_page.dart';
 
 import '../../core/assets/assets.gen.dart';
 import '../../core/components/buttons.dart';
 import '../../core/components/custom_text_field.dart';
 import '../../core/components/spaces.dart';
 import '../../core/constants/colors.dart';
+import '../home/pages/dashboard_page.dart';
 import 'bloc/login/login_bloc.dart';
 
 class LoginPage extends StatefulWidget {
@@ -42,6 +42,7 @@ class _LoginPageState extends State<LoginPage> {
                 Assets.icons.homeResto.path,
                 width: 100,
                 height: 100,
+                // ignore: deprecated_member_use
                 color: AppColors.primary,
               )),
           const SpaceHeight(24.0),
@@ -82,8 +83,8 @@ class _LoginPageState extends State<LoginPage> {
             listener: (context, state) {
               state.maybeWhen(
                 orElse: () {},
-                success: (AuthResponseModel) {
-                  AuthLocalDatasource().saveAuthData(AuthResponseModel);
+                success: (authResponseModel) {
+                  AuthLocalDatasource().saveAuthData(authResponseModel);
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(

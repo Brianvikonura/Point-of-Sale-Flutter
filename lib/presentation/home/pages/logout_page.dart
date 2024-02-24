@@ -1,33 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:point_of_sale_flutter/core/constants/colors.dart';
-import 'package:point_of_sale_flutter/data/datasources/auth_local_datasource.dart';
-import 'package:point_of_sale_flutter/data/models/response/auth_response_model.dart';
-import 'package:point_of_sale_flutter/presentation/auth/bloc/logout/logout_bloc.dart';
-import 'package:point_of_sale_flutter/presentation/auth/login_page.dart';
 
-class DashboardPage extends StatefulWidget {
-  const DashboardPage({super.key});
+import '../../../core/constants/colors.dart';
+import '../../../data/datasources/auth_local_datasource.dart';
+import '../../auth/bloc/logout/logout_bloc.dart';
+import '../../auth/login_page.dart';
+
+class LogoutPage extends StatefulWidget {
+  const LogoutPage({super.key});
 
   @override
-  State<DashboardPage> createState() => _DashboardPageState();
+  State<LogoutPage> createState() => _LogoutPageState();
 }
 
-class _DashboardPageState extends State<DashboardPage> {
-  User? user;
-
-  @override
-  void initState() {
-    AuthLocalDatasource().getAuthData().then((value) {
-      if (value != null) {
-        setState(() {
-          user = value.user;
-        });
-      }
-    });
-    super.initState();
-  }
-
+class _LogoutPageState extends State<LogoutPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +24,6 @@ class _DashboardPageState extends State<DashboardPage> {
         child: Column(
           children: [
             const Text('Welcome to Dashboard'),
-            Text('Name: ${user?.name ?? ''}'),
             const SizedBox(
               height: 100,
             ),

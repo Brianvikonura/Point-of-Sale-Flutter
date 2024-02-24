@@ -4,11 +4,12 @@ import 'package:point_of_sale_flutter/data/datasources/auth_local_datasource.dar
 import 'package:point_of_sale_flutter/data/datasources/auth_remote_datasource.dart';
 import 'package:point_of_sale_flutter/presentation/auth/bloc/logout/logout_bloc.dart';
 import 'package:point_of_sale_flutter/presentation/auth/login_page.dart';
-import 'package:point_of_sale_flutter/presentation/home/dashboard_page.dart';
 
 import 'core/constants/colors.dart';
 import 'presentation/auth/bloc/login/login_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'presentation/home/pages/dashboard_page.dart';
 
 void main() {
   runApp(const MyApp());
