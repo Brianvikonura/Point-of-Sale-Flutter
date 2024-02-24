@@ -60,7 +60,7 @@ class _LogoutPageState extends State<LogoutPage> {
                 },
                 child: const Text('logout'),
               ),
-            )
+            ),
           ],
         ),
       ),

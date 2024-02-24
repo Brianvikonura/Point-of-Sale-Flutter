@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:point_of_sale_flutter/core/extensions/build_context_ext.dart';
+import 'package:point_of_sale_flutter/data/datasources/auth_local_datasource.dart';
+import 'package:point_of_sale_flutter/presentation/auth/login_page.dart';
 
 import '../../../core/assets/assets.gen.dart';
 import '../../../core/constants/colors.dart';
+import '../../auth/bloc/logout/logout_bloc.dart';
 import '../widgets/nav_item.dart';
 import 'home_page.dart';
 
@@ -72,11 +76,43 @@ class _DashboardPageState extends State<DashboardPage> {
                           isActive: _selectedIndex == 3,
                           onTap: () => _onItemTapped(3),
                         ),
-                        NavItem(
-                          iconPath: Assets.icons.logout.path,
-                          isActive: false,
-                          onTap: () {},
-                        ),
+                        BlocListener<LogoutBloc, LogoutState>(
+                          listener: (context, state) {
+                            state.maybeMap(
+                              orElse: () {},
+                              error: (e) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(e.message),
+                                    backgroundColor: AppColors.red,
+                                  ),
+                                );
+                              },
+                              success: (value) {
+                                AuthLocalDatasource().removeAuthData();
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text('Logout Success'),
+                                    backgroundColor: AppColors.primary,
+                                  ),
+                                );
+                                Navigator.pushReplacement(context,
+                                    MaterialPageRoute(builder: (context) {
+                                  return const LoginPage();
+                                }));
+                              },
+                            );
+                          },
+                          child: NavItem(
+                            iconPath: Assets.icons.logout.path,
+                            isActive: false,
+                            onTap: () {
+                              context
+                                  .read<LogoutBloc>()
+                                  .add(const LogoutEvent.logout());
+                            },
+                          ),
+                        )
                       ],
                     ),
                   ),
