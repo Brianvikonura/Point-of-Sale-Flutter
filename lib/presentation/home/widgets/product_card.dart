@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:point_of_sale_flutter/core/constants/variables.dart';
+import 'package:point_of_sale_flutter/data/models/response/product_response_model.dart';
 
 import '../../../../core/core.dart';
 import '../../../core/components/spaces.dart';
-import '../models/product_model.dart';
 
 class ProductCard extends StatelessWidget {
-  final ProductModel data;
+  final Product data;
   final VoidCallback onCartButton;
 
   const ProductCard({
@@ -43,8 +44,10 @@ class ProductCard extends StatelessWidget {
                   ),
                   child: ClipRRect(
                     borderRadius: const BorderRadius.all(Radius.circular(40.0)),
-                    child: Image.asset(
-                      data.image,
+                    child: Image.network(
+                      data.image!.contains('http')
+                          ? data.image!
+                          : '${Variables.baseUrl}/${data.image}',
                       width: 50,
                       height: 50,
                       fit: BoxFit.cover,
@@ -54,7 +57,7 @@ class ProductCard extends StatelessWidget {
                 const Spacer(),
                 FittedBox(
                   child: Text(
-                    data.name,
+                    data.name ?? '-',
                     style: const TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w700,
@@ -70,7 +73,7 @@ class ProductCard extends StatelessWidget {
                     Flexible(
                       child: FittedBox(
                         child: Text(
-                          data.category.value,
+                          data.categoryId.toString(),
                           style: const TextStyle(
                             color: AppColors.grey,
                             fontSize: 12,
@@ -81,7 +84,7 @@ class ProductCard extends StatelessWidget {
                     Flexible(
                       child: FittedBox(
                         child: Text(
-                          data.priceFormat,
+                          data.price!.toIntegerFromText.currencyFormatRp,
                           style: const TextStyle(
                             fontWeight: FontWeight.w700,
                             fontSize: 12,
