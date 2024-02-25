@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:point_of_sale_flutter/data/datasources/product_local_datasource.dart';
-import 'package:point_of_sale_flutter/presentation/setting/bloc/bloc/sync_product_bloc.dart';
+import 'package:point_of_sale_flutter/presentation/setting/bloc/sync_product/sync_product_bloc.dart';
 
 class SyncDataPage extends StatefulWidget {
   const SyncDataPage({super.key});
