@@ -6,7 +6,7 @@ import 'package:point_of_sale_flutter/data/models/response/product_response_mode
 import '../../core/constants/variables.dart';
 
 class ProductRemoteDatasource {
-  Future<Either<String, ProductResponseModel>> getProduct() async {
+  Future<Either<String, ProductResponseModel>> getProducts() async {
     final url = Uri.parse('${Variables.baseUrl}/api/api-products');
     final authData = await AuthLocalDatasource().getAuthData();
     final response = await http.get(url, headers: {
