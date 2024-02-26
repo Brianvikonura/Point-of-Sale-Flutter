@@ -201,12 +201,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         const SizedBox(height: 24),
                         CustomTabBar(
-                          tabTitles: const [
-                            'Semua',
-                            'Makanan',
-                            'Minuman',
-                            'Snack'
-                          ],
+                          tabTitles: const ['All', 'Food', 'Drink', 'Snack'],
                           initialTabIndex: 0,
                           tabViews: [
                             // if (searchResults.isEmpty)
@@ -255,40 +250,147 @@ class _HomePageState extends State<HomePage> {
                                 },
                               ),
                             ),
-                            // if (searchResults
-                            //     .where((element) => element.category.isFood)
-                            //     .toList()
-                            //     .isEmpty)
-                            //   const Padding(
-                            //     padding: EdgeInsets.only(top: 80.0),
-                            //     child: _IsEmpty(),
-                            //   )
-                            // else
-                            //   SizedBox(
-                            //     child: GridView.builder(
-                            //       shrinkWrap: true,
-                            //       itemCount: searchResults
-                            //           .where(
-                            //               (element) => element.category.isFood)
-                            //           .toList()
-                            //           .length,
-                            //       physics: const NeverScrollableScrollPhysics(),
-                            //       gridDelegate:
-                            //           const SliverGridDelegateWithFixedCrossAxisCount(
-                            //         childAspectRatio: 0.85,
-                            //         crossAxisCount: 3,
-                            //         crossAxisSpacing: 30.0,
-                            //         mainAxisSpacing: 30.0,
-                            //       ),
-                            //       itemBuilder: (context, index) => ProductCard(
-                            //         data: searchResults
-                            //             .where((element) =>
-                            //                 element.category.isFood)
-                            //             .toList()[index],
-                            //         onCartButton: () {},
-                            //       ),
-                            //     ),
-                            //   ),
+                            SizedBox(
+                              child: BlocBuilder<LocalProductBloc,
+                                  LocalProductState>(
+                                builder: (context, state) {
+                                  return state.maybeWhen(orElse: () {
+                                    return const Center(
+                                      child: CircularProgressIndicator(),
+                                    );
+                                  }, loading: () {
+                                    return const Center(
+                                      child: CircularProgressIndicator(),
+                                    );
+                                  }, loaded: (products) {
+                                    if (products.isEmpty) {
+                                      return const Center(
+                                        child: Text('No Items'),
+                                      );
+                                    }
+                                    return GridView.builder(
+                                      shrinkWrap: true,
+                                      itemCount: products
+                                          .where((element) =>
+                                              element.category!.id == 1)
+                                          .toList()
+                                          .length,
+                                      physics:
+                                          const NeverScrollableScrollPhysics(),
+                                      gridDelegate:
+                                          const SliverGridDelegateWithFixedCrossAxisCount(
+                                        childAspectRatio: 0.85,
+                                        crossAxisCount: 3,
+                                        crossAxisSpacing: 30.0,
+                                        mainAxisSpacing: 30.0,
+                                      ),
+                                      itemBuilder: (context, index) =>
+                                          ProductCard(
+                                        data: products
+                                            .where((element) =>
+                                                element.category!.id == 1)
+                                            .toList()[index],
+                                        onCartButton: () {},
+                                      ),
+                                    );
+                                  });
+                                },
+                              ),
+                            ),
+                            SizedBox(
+                              child: BlocBuilder<LocalProductBloc,
+                                  LocalProductState>(
+                                builder: (context, state) {
+                                  return state.maybeWhen(orElse: () {
+                                    return const Center(
+                                      child: CircularProgressIndicator(),
+                                    );
+                                  }, loading: () {
+                                    return const Center(
+                                      child: CircularProgressIndicator(),
+                                    );
+                                  }, loaded: (products) {
+                                    if (products.isEmpty) {
+                                      return const Center(
+                                        child: Text('No Items'),
+                                      );
+                                    }
+                                    return GridView.builder(
+                                      shrinkWrap: true,
+                                      itemCount: products
+                                          .where((element) =>
+                                              element.category!.id == 2)
+                                          .toList()
+                                          .length,
+                                      physics:
+                                          const NeverScrollableScrollPhysics(),
+                                      gridDelegate:
+                                          const SliverGridDelegateWithFixedCrossAxisCount(
+                                        childAspectRatio: 0.85,
+                                        crossAxisCount: 3,
+                                        crossAxisSpacing: 30.0,
+                                        mainAxisSpacing: 30.0,
+                                      ),
+                                      itemBuilder: (context, index) =>
+                                          ProductCard(
+                                        data: products
+                                            .where((element) =>
+                                                element.category!.id == 2)
+                                            .toList()[index],
+                                        onCartButton: () {},
+                                      ),
+                                    );
+                                  });
+                                },
+                              ),
+                            ),
+                            SizedBox(
+                              child: BlocBuilder<LocalProductBloc,
+                                  LocalProductState>(
+                                builder: (context, state) {
+                                  return state.maybeWhen(orElse: () {
+                                    return const Center(
+                                      child: CircularProgressIndicator(),
+                                    );
+                                  }, loading: () {
+                                    return const Center(
+                                      child: CircularProgressIndicator(),
+                                    );
+                                  }, loaded: (products) {
+                                    if (products.isEmpty) {
+                                      return const Center(
+                                        child: Text('No Items'),
+                                      );
+                                    }
+                                    return GridView.builder(
+                                      shrinkWrap: true,
+                                      itemCount: products
+                                          .where((element) =>
+                                              element.category!.id == 3)
+                                          .toList()
+                                          .length,
+                                      physics:
+                                          const NeverScrollableScrollPhysics(),
+                                      gridDelegate:
+                                          const SliverGridDelegateWithFixedCrossAxisCount(
+                                        childAspectRatio: 0.85,
+                                        crossAxisCount: 3,
+                                        crossAxisSpacing: 30.0,
+                                        mainAxisSpacing: 30.0,
+                                      ),
+                                      itemBuilder: (context, index) =>
+                                          ProductCard(
+                                        data: products
+                                            .where((element) =>
+                                                element.category!.id == 3)
+                                            .toList()[index],
+                                        onCartButton: () {},
+                                      ),
+                                    );
+                                  });
+                                },
+                              ),
+                            ),
                             // if (searchResults
                             //     .where((element) => element.category.isDrink)
                             //     .toList()
