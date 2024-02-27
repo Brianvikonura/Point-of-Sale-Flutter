@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:point_of_sale_flutter/core/constants/variables.dart';
 import 'package:point_of_sale_flutter/data/models/response/product_response_model.dart';
+import 'package:point_of_sale_flutter/presentation/home/bloc/local_product/checkout/checkout_bloc.dart';
 
 import '../../../../core/core.dart';
 import '../../../core/components/spaces.dart';
@@ -20,6 +22,7 @@ class ProductCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         // context.read<CheckoutBloc>().add(CheckoutEvent.addProduct(data));
+        context.read<CheckoutBloc>().add(CheckoutEvent.addItem(data));
       },
       child: Container(
         padding: const EdgeInsets.all(16.0),

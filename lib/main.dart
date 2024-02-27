@@ -6,6 +6,7 @@ import 'package:point_of_sale_flutter/data/datasources/product_local_datasource.
 import 'package:point_of_sale_flutter/data/datasources/product_remote_datasource.dart';
 import 'package:point_of_sale_flutter/presentation/auth/bloc/logout/logout_bloc.dart';
 import 'package:point_of_sale_flutter/presentation/auth/login_page.dart';
+import 'package:point_of_sale_flutter/presentation/home/bloc/local_product/checkout/checkout_bloc.dart';
 import 'package:point_of_sale_flutter/presentation/home/bloc/local_product/local_product_bloc.dart';
 import 'package:point_of_sale_flutter/presentation/setting/bloc/sync_product/sync_product_bloc.dart';
 
@@ -39,6 +40,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) =>
               LocalProductBloc(ProductLocalDatasource.instance),
+        ),
+        BlocProvider(
+          create: (context) => CheckoutBloc(),
         ),
       ],
       child: MaterialApp(

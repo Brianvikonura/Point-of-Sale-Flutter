@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:point_of_sale_flutter/presentation/home/bloc/local_product/checkout/checkout_bloc.dart';
 import 'package:point_of_sale_flutter/presentation/home/bloc/local_product/local_product_bloc.dart';
+import 'package:point_of_sale_flutter/presentation/home/widgets/order_menu.dart';
 
 import '../../../core/assets/assets.gen.dart';
 import '../../../core/components/buttons.dart';
@@ -545,32 +547,32 @@ class _HomePageState extends State<HomePage> {
                           const SpaceHeight(8),
                           const Divider(),
                           const SpaceHeight(8),
-                          // BlocBuilder<CheckoutBloc, CheckoutState>(
-                          //   builder: (context, state) {
-                          //     return state.maybeWhen(
-                          //       orElse: () => const Center(
-                          //         child: Text('No Items'),
-                          //       ),
-                          //       success: (products, qty, price) {
-                          //         if (products.isEmpty) {
-                          //           return const Center(
-                          //             child: Text('No Items'),
-                          //           );
-                          //         }
-                          //         return ListView.separated(
-                          //           shrinkWrap: true,
-                          //           physics:
-                          //               const NeverScrollableScrollPhysics(),
-                          //           itemBuilder: (context, index) =>
-                          //               OrderMenu(data: products[index]),
-                          //           separatorBuilder: (context, index) =>
-                          //               const SpaceHeight(1.0),
-                          //           itemCount: products.length,
-                          //         );
-                          //       },
-                          //     );
-                          //   },
-                          // ),
+                          BlocBuilder<CheckoutBloc, CheckoutState>(
+                            builder: (context, state) {
+                              return state.maybeWhen(
+                                orElse: () => const Center(
+                                  child: Text('No Items'),
+                                ),
+                                loaded: (products) {
+                                  if (products.isEmpty) {
+                                    return const Center(
+                                      child: Text('No Items'),
+                                    );
+                                  }
+                                  return ListView.separated(
+                                    shrinkWrap: true,
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
+                                    itemBuilder: (context, index) =>
+                                        OrderMenu(data: products[index]),
+                                    separatorBuilder: (context, index) =>
+                                        const SpaceHeight(1.0),
+                                    itemCount: products.length,
+                                  );
+                                },
+                              );
+                            },
+                          ),
                           const SpaceHeight(8.0),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
