@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:point_of_sale_flutter/core/core.dart';
 import 'package:point_of_sale_flutter/presentation/home/bloc/local_product/checkout/checkout_bloc.dart';
 import 'package:point_of_sale_flutter/presentation/home/bloc/local_product/local_product_bloc.dart';
 import 'package:point_of_sale_flutter/presentation/home/widgets/order_menu.dart';
@@ -638,21 +639,32 @@ class _HomePageState extends State<HomePage> {
                                 'Sub total',
                                 style: TextStyle(color: AppColors.grey),
                               ),
-                              // BlocBuilder<CheckoutBloc, CheckoutState>(
-                              //   builder: (context, state) {
-                              //     final price = state.maybeWhen(
-                              //       orElse: () => 0,
-                              //       success: (products, qty, price) => price,
-                              //     );
-                              //     return Text(
-                              //       price.currencyFormatRp,
-                              //       style: const TextStyle(
-                              //         color: AppColors.primary,
-                              //         fontWeight: FontWeight.w600,
-                              //       ),
-                              //     );
-                              //   },
-                              // ),
+                              BlocBuilder<CheckoutBloc, CheckoutState>(
+                                builder: (context, state) {
+                                  final price = state.maybeWhen(
+                                      orElse: () => 0,
+                                      loaded: (products) {
+                                        if (products.isEmpty) {
+                                          return 0;
+                                        }
+                                        return products
+                                            .map((e) =>
+                                                e.product.price!
+                                                    .toIntegerFromText *
+                                                e.quantity)
+                                            .reduce((value, element) =>
+                                                value + element);
+                                      });
+
+                                  return Text(
+                                    price.currencyFormatRp,
+                                    style: const TextStyle(
+                                      color: AppColors.primary,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  );
+                                },
+                              ),
                             ],
                           ),
                           const SpaceHeight(100.0),

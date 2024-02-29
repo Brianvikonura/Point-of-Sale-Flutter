@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:point_of_sale_flutter/core/constants/variables.dart';
 import 'package:point_of_sale_flutter/core/core.dart';
+import 'package:point_of_sale_flutter/presentation/home/bloc/local_product/checkout/checkout_bloc.dart';
 import 'package:point_of_sale_flutter/presentation/home/models/product_quantity.dart';
 
 import '../../../core/components/spaces.dart';
-import '../models/order_item.dart';
 
 class OrderMenu extends StatelessWidget {
   final ProductQuantity data;
@@ -70,6 +71,10 @@ class OrderMenu extends StatelessWidget {
                     //   // data.quantity--;
                     //   // setState(() {});
                     // }
+
+                    context
+                        .read<CheckoutBloc>()
+                        .add(CheckoutEvent.removeItem(data.product));
                   },
                   child: Container(
                     width: 30,
@@ -96,6 +101,10 @@ class OrderMenu extends StatelessWidget {
                     //     onDeleteTap();
                     // data.quantity++;
                     // setState(() {});
+
+                    context
+                        .read<CheckoutBloc>()
+                        .add(CheckoutEvent.addItem(data.product));
                   },
                   child: Container(
                     width: 30,
