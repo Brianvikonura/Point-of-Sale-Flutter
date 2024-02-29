@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:point_of_sale_flutter/core/core.dart';
 import 'package:point_of_sale_flutter/presentation/home/bloc/local_product/checkout/checkout_bloc.dart';
 import 'package:point_of_sale_flutter/presentation/home/bloc/local_product/local_product_bloc.dart';
+import 'package:point_of_sale_flutter/presentation/home/pages/confirm_payment_page.dart';
 import 'package:point_of_sale_flutter/presentation/home/widgets/order_menu.dart';
 
 import '../../../core/assets/assets.gen.dart';
@@ -680,7 +681,7 @@ class _HomePageState extends State<HomePage> {
                               horizontal: 24.0, vertical: 16.0),
                           child: Button.filled(
                             onPressed: () {
-                              // context.push(const ConfirmPaymentPage());
+                              context.push(const ConfirmPaymentPage());
                             },
                             label: 'Lanjutkan Pembayaran',
                           ),
