@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:point_of_sale_flutter/core/components/buttons.dart';
 import 'package:point_of_sale_flutter/core/components/spaces.dart';
 import 'package:point_of_sale_flutter/presentation/home/bloc/local_product/checkout/checkout_bloc.dart';
+import 'package:point_of_sale_flutter/presentation/home/bloc/order/order_bloc.dart';
 import 'package:print_bluetooth_thermal/print_bluetooth_thermal.dart';
 
 import '../../../../core/core.dart';
@@ -41,58 +43,30 @@ class _SuccessPaymentDialogState extends State<SuccessPaymentDialog> {
             const SpaceHeight(20.0),
             const Text('METODE BAYAR'),
             const SpaceHeight(5.0),
-            const Text(
-              'Tunai',
-              style: TextStyle(
-                fontWeight: FontWeight.w700,
-              ),
+            BlocBuilder<OrderBloc, OrderState>(
+              builder: (context, state) {
+                final paymentMethod = state.maybeWhen(
+                  orElse: () => 'Cash',
+                  loaded: (model) => model.paymentMethod,
+                );
+                return Text(
+                  paymentMethod,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w700,
+                  ),
+                );
+              },
             ),
             const SpaceHeight(10.0),
             const Divider(),
             const SpaceHeight(8.0),
             const Text('TOTAL TAGIHAN'),
             const SpaceHeight(5.0),
-            BlocBuilder<CheckoutBloc, CheckoutState>(
+            BlocBuilder<OrderBloc, OrderState>(
               builder: (context, state) {
-                final price = state.maybeWhen(
+                final total = state.maybeWhen(
                   orElse: () => 0,
-                  loaded: (products) => products.fold<int>(
-                    0,
-                    ((previousValue, element) =>
-                        previousValue +
-                        (element.product.price!.toIntegerFromText *
-                            element.quantity)),
-                  ),
-                );
-                final tax = price * 0.11;
-                final total = price + tax;
-                // data = state.maybeWhen(
-                //   orElse: () => [],
-                //   loaded: (products) => products
-                //   .map((e) => OrderItem(
-                //     name: e.product.name!,
-                //     price: e.product.price!.toIntegerFromText,
-                //     qty: e.quantity,
-                //   ))
-                //   .toList(),
-                // );
-                totalQty = state.maybeWhen(
-                  orElse: () => 0,
-                  loaded: (products) => products.fold<int>(
-                    0,
-                    (previousValue, element) =>
-                        previousValue + element.quantity,
-                  ),
-                );
-                totalPrice = state.maybeWhen(
-                  orElse: () => 0,
-                  loaded: (products) => products.fold<int>(
-                    0,
-                    (previousValue, element) =>
-                        previousValue +
-                        (element.product.price!.toIntegerFromText *
-                            element.quantity),
-                  ),
+                  loaded: (model) => model.total,
                 );
                 return Text(
                   total.ceil().currencyFormatRp,
@@ -107,22 +81,37 @@ class _SuccessPaymentDialogState extends State<SuccessPaymentDialog> {
             const SpaceHeight(8.0),
             const Text('NOMINAL BAYAR'),
             const SpaceHeight(5.0),
-            BlocBuilder<CheckoutBloc, CheckoutState>(
+            BlocBuilder<OrderBloc, OrderState>(
               builder: (context, state) {
-                final price = state.maybeWhen(
+                final paymentAmount = state.maybeWhen(
                   orElse: () => 0,
-                  loaded: (products) => products.fold<int>(
-                    0,
-                    (previousValue, element) =>
-                        previousValue +
-                        (element.product.price!.toIntegerFromText *
-                            element.quantity),
+                  loaded: (model) => model.paymentAmount,
+                );
+                return Text(
+                  paymentAmount.ceil().currencyFormatRp,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w700,
                   ),
                 );
-                final tax = price * 0.11;
-                final total = price + tax;
+              },
+            ),
+            const Divider(),
+            const SpaceHeight(8.0),
+            const Text('KEMBALIAN'),
+            const SpaceHeight(5.0),
+            BlocBuilder<OrderBloc, OrderState>(
+              builder: (context, state) {
+                final paymentAmount = state.maybeWhen(
+                  orElse: () => 0,
+                  loaded: (model) => model.paymentAmount,
+                );
+                final total = state.maybeWhen(
+                  orElse: () => 0,
+                  loaded: (model) => model.total,
+                );
+                final paymentDifference = paymentAmount - total;
                 return Text(
-                  total.ceil().currencyFormatRp,
+                  paymentDifference.ceil().currencyFormatRp,
                   style: const TextStyle(
                     fontWeight: FontWeight.w700,
                   ),
@@ -134,9 +123,9 @@ class _SuccessPaymentDialogState extends State<SuccessPaymentDialog> {
             const SpaceHeight(8.0),
             const Text('WAKTU PEMBAYARAN'),
             const SpaceHeight(5.0),
-            const Text(
-              '22 Januari, 11:17',
-              style: TextStyle(
+            Text(
+              DateFormat('dd MMMM yyyy, HH:mm').format(DateTime.now()),
+              style: const TextStyle(
                 fontWeight: FontWeight.w700,
               ),
             ),
