@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:point_of_sale_flutter/core/components/buttons.dart';
 import 'package:point_of_sale_flutter/core/components/spaces.dart';
-import 'package:point_of_sale_flutter/presentation/home/bloc/local_product/checkout/checkout_bloc.dart';
+import 'package:point_of_sale_flutter/presentation/home/bloc/checkout/checkout_bloc.dart';
 import 'package:point_of_sale_flutter/presentation/home/bloc/order/order_bloc.dart';
 import 'package:point_of_sale_flutter/presentation/home/models/product_quantity.dart';
 import 'package:point_of_sale_flutter/presentation/home/widgets/success_payment_dialog.dart';

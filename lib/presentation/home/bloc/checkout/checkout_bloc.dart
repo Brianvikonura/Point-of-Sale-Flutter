@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:point_of_sale_flutter/presentation/home/models/product_quantity.dart';
 
 import '../../../../../data/models/response/product_response_model.dart';
-import '../../../models/product_quantity.dart';
 
 part 'checkout_event.dart';
 part 'checkout_state.dart';
