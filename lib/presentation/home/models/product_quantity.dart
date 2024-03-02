@@ -49,7 +49,7 @@ class ProductQuantity {
 
   factory ProductQuantity.fromLocalMap(Map<String, dynamic> map) {
     return ProductQuantity(
-      product: Product.fromLocalMap(map),
+      product: Product.fromOrderMap(map),
       quantity: map['quantity']?.toInt() ?? 0,
     );
   }

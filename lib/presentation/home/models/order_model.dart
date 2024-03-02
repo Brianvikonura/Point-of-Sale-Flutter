@@ -35,6 +35,23 @@ class OrderModel {
     required this.orderItems,
   });
 
+  Map<String, dynamic> toServerMap() {
+    return <String, dynamic>{
+      'payment_amount': paymentAmount,
+      'sub_total': subTotal,
+      'tax': tax,
+      'discount': discount,
+      'service_charge': serviceCharge,
+      'total': total,
+      'payment_method': paymentMethod,
+      'total_item': totalItem,
+      'id_kasir': idKasir,
+      'nama_kasir': namaKasir,
+      'transaction_time': transactionTime,
+      'order_items': orderItems.map((e) => e.toLocalMap(id!)).toList(),
+    };
+  }
+
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
@@ -72,8 +89,42 @@ class OrderModel {
     );
   }
 
-  String toJson() => json.encode(toMap());
+  String toJson() => json.encode(toServerMap());
 
   factory OrderModel.fromJson(String source) =>
-      OrderModel.fromMap(json.decode(source) as Map<String, dynamic>);
+      OrderModel.fromMap(json.decode(source));
+
+  OrderModel copyWith({
+    int? id,
+    int? paymentAmount,
+    int? subTotal,
+    int? tax,
+    int? discount,
+    int? serviceCharge,
+    int? total,
+    String? paymentMethod,
+    int? totalItem,
+    int? idKasir,
+    String? namaKasir,
+    String? transactionTime,
+    int? isSync,
+    List<ProductQuantity>? orderItems,
+  }) {
+    return OrderModel(
+      id: id ?? this.id,
+      paymentAmount: paymentAmount ?? this.paymentAmount,
+      subTotal: subTotal ?? this.subTotal,
+      tax: tax ?? this.tax,
+      discount: discount ?? this.discount,
+      serviceCharge: serviceCharge ?? this.serviceCharge,
+      total: total ?? this.total,
+      paymentMethod: paymentMethod ?? this.paymentMethod,
+      totalItem: totalItem ?? this.totalItem,
+      idKasir: idKasir ?? this.idKasir,
+      namaKasir: namaKasir ?? this.namaKasir,
+      transactionTime: transactionTime ?? this.transactionTime,
+      isSync: isSync ?? this.isSync,
+      orderItems: orderItems ?? this.orderItems,
+    );
+  }
 }
