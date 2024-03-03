@@ -3,11 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:point_of_sale_flutter/core/extensions/build_context_ext.dart';
 import 'package:point_of_sale_flutter/data/datasources/auth_local_datasource.dart';
 import 'package:point_of_sale_flutter/presentation/auth/login_page.dart';
+import 'package:point_of_sale_flutter/presentation/setting/pages/settings_page.dart';
 
 import '../../../core/assets/assets.gen.dart';
 import '../../../core/constants/colors.dart';
 import '../../auth/bloc/logout/logout_bloc.dart';
-import '../../setting/pages/sync_data_page.dart';
 import '../widgets/nav_item.dart';
 import 'home_page.dart';
 
@@ -27,7 +27,7 @@ class _DashboardPageState extends State<DashboardPage> {
     const Center(child: Text('This is page 2')),
     const Center(child: Text('This is page 3')),
     // const Center(child: Text('This is page 4')),
-    const SyncDataPage(),
+    const SettingsPage(),
     // const ManagePrinterPage(),
     // const SettingsPage(),
   ];
