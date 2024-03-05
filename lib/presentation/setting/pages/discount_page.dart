@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:point_of_sale_flutter/presentation/home/models/product_category.dart';
 import 'package:point_of_sale_flutter/presentation/home/widgets/custom_tab_bar.dart';
+import 'package:point_of_sale_flutter/presentation/setting/bloc/discount/discount_bloc.dart';
 import 'package:point_of_sale_flutter/presentation/setting/dialogs/form_discount_dialog.dart';
 import 'package:point_of_sale_flutter/presentation/setting/models/discount_model.dart';
 import 'package:point_of_sale_flutter/presentation/setting/widgets/add_data.dart';
@@ -16,15 +18,15 @@ class DiscountPage extends StatefulWidget {
 }
 
 class _DiscountPageState extends State<DiscountPage> {
-  final List<DiscountModel> discounts = [
-    DiscountModel(
-      name: '20',
-      code: 'BUKAPUASA',
-      description: null,
-      discount: 50,
-      category: ProductCategory.food,
-    ),
-  ];
+  // final List<DiscountModel> discounts = [
+  //   DiscountModel(
+  //     name: '20',
+  //     code: 'BUKAPUASA',
+  //     description: null,
+  //     discount: 50,
+  //     category: ProductCategory.food,
+  //   ),
+  // ];
 
   void onEditTap(DiscountModel item) {
     showDialog(
@@ -41,6 +43,12 @@ class _DiscountPageState extends State<DiscountPage> {
   }
 
   @override
+  void initState() {
+    context.read<DiscountBloc>().add(const DiscountEvent.getDiscounts());
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
@@ -54,129 +62,38 @@ class _DiscountPageState extends State<DiscountPage> {
             tabViews: [
               // SEMUA TAB
               SizedBox(
-                child: GridView.builder(
-                  shrinkWrap: true,
-                  itemCount: discounts.length + 1,
-                  physics: const NeverScrollableScrollPhysics(),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    childAspectRatio: 0.85,
-                    crossAxisCount: 3,
-                    crossAxisSpacing: 30.0,
-                    mainAxisSpacing: 30.0,
-                  ),
-                  itemBuilder: (context, index) {
-                    if (index == 0) {
-                      return AddData(
-                        title: 'Tambah Diskon Baru',
-                        onPressed: onAddDataTap,
+                child: BlocBuilder<DiscountBloc, DiscountState>(
+                  builder: (context, state) {
+                    return state.maybeWhen(orElse: () {
+                      return const Center(
+                        child: CircularProgressIndicator(),
                       );
-                    }
-                    final item = discounts[index - 1];
-                    return ManageDiscountCard(
-                      data: item,
-                      onEditTap: () => onEditTap(item),
-                    );
-                  },
-                ),
-              ),
-
-              // MAKANAN TAB
-              SizedBox(
-                child: GridView.builder(
-                  shrinkWrap: true,
-                  itemCount: discounts
-                          .where((element) => element.category.isFood)
-                          .toList()
-                          .length +
-                      1,
-                  physics: const NeverScrollableScrollPhysics(),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    childAspectRatio: 0.85,
-                    crossAxisCount: 3,
-                    crossAxisSpacing: 30.0,
-                    mainAxisSpacing: 30.0,
-                  ),
-                  itemBuilder: (context, index) {
-                    if (index == 0) {
-                      return AddData(
-                        title: 'Tambah Diskon Baru',
-                        onPressed: onAddDataTap,
+                    }, loaded: (discounts) {
+                      return GridView.builder(
+                        shrinkWrap: true,
+                        itemCount: discounts.length + 1,
+                        physics: const NeverScrollableScrollPhysics(),
+                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                          childAspectRatio: 0.85,
+                          crossAxisCount: 3,
+                          mainAxisSpacing: 30.0,
+                          crossAxisSpacing: 30.0,
+                        ),
+                        itemBuilder: (context, index) {
+                          if (index == 0) {
+                            return AddData(
+                              title: 'Tambah Diskon Baru',
+                              onPressed: onAddDataTap
+                            );
+                          }
+                          final item = discounts[index - 1];
+                          return ManageDiscountCard(
+                            data: item,
+                            onEditTap: (){}
+                          );
+                        },
                       );
-                    }
-                    final item = discounts
-                        .where((element) => element.category.isFood)
-                        .toList()[index - 1];
-                    return ManageDiscountCard(
-                      data: item,
-                      onEditTap: () => onEditTap(item),
-                    );
-                  },
-                ),
-              ),
-
-              // MINUMAN TAB
-              SizedBox(
-                child: GridView.builder(
-                  shrinkWrap: true,
-                  itemCount: discounts
-                          .where((element) => element.category.isDrink)
-                          .toList()
-                          .length +
-                      1,
-                  physics: const NeverScrollableScrollPhysics(),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    childAspectRatio: 0.85,
-                    crossAxisCount: 3,
-                    crossAxisSpacing: 30.0,
-                    mainAxisSpacing: 30.0,
-                  ),
-                  itemBuilder: (context, index) {
-                    if (index == 0) {
-                      return AddData(
-                        title: 'Tambah Diskon Baru',
-                        onPressed: onAddDataTap,
-                      );
-                    }
-                    final item = discounts
-                        .where((element) => element.category.isDrink)
-                        .toList()[index - 1];
-                    return ManageDiscountCard(
-                      data: item,
-                      onEditTap: () => onEditTap(item),
-                    );
-                  },
-                ),
-              ),
-
-              // SNACK TAB
-              SizedBox(
-                child: GridView.builder(
-                  shrinkWrap: true,
-                  itemCount: discounts
-                          .where((element) => element.category.isSnack)
-                          .toList()
-                          .length +
-                      1,
-                  physics: const NeverScrollableScrollPhysics(),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    childAspectRatio: 0.85,
-                    crossAxisCount: 3,
-                    crossAxisSpacing: 30.0,
-                    mainAxisSpacing: 30.0,
-                  ),
-                  itemBuilder: (context, index) {
-                    if (index == 0) {
-                      return AddData(
-                        title: 'Tambah Diskon Baru',
-                        onPressed: onAddDataTap,
-                      );
-                    }
-                    final item = discounts
-                        .where((element) => element.category.isSnack)
-                        .toList()[index - 1];
-                    return ManageDiscountCard(
-                      data: item,
-                      onEditTap: () => onEditTap(item),
+                    },
                     );
                   },
                 ),

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:point_of_sale_flutter/core/assets/assets.gen.dart';
 import 'package:point_of_sale_flutter/core/constants/colors.dart';
-import 'package:point_of_sale_flutter/presentation/setting/models/discount_model.dart';
-
+import 'package:point_of_sale_flutter/core/core.dart';
+import 'package:point_of_sale_flutter/data/models/response/discount_response_model.dart';
 
 class ManageDiscountCard extends StatelessWidget {
-  final DiscountModel data;
+  final Discount data;
   final VoidCallback onEditTap;
 
   const ManageDiscountCard({
@@ -32,16 +32,16 @@ class ManageDiscountCard extends StatelessWidget {
               const Spacer(),
               Container(
                 alignment: Alignment.center,
-                padding: const EdgeInsets.all(12.0),
+                padding: const EdgeInsets.all(20.0),
                 margin: const EdgeInsets.only(top: 30.0),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: AppColors.disabled.withOpacity(0.4),
                 ),
                 child: Text(
-                  '${data.discount}%',
+                  '${data.value!.replaceAll('.00', '')}%',
                   style: const TextStyle(
-                    fontSize: 32,
+                    fontSize: 24,
                     fontWeight: FontWeight.w900,
                   ),
                 ),
@@ -53,7 +53,7 @@ class ManageDiscountCard extends StatelessWidget {
                     text: 'Nama Promo : ',
                     children: [
                       TextSpan(
-                        text: data.code,
+                        text: data.name,
                         style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
