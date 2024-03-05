@@ -3,13 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:point_of_sale_flutter/core/core.dart';
 import 'package:point_of_sale_flutter/presentation/home/bloc/checkout/checkout_bloc.dart';
 import 'package:point_of_sale_flutter/presentation/home/bloc/local_product/local_product_bloc.dart';
+import 'package:point_of_sale_flutter/presentation/home/dialog/discount_dialog.dart';
+import 'package:point_of_sale_flutter/presentation/home/dialog/service_dialog.dart';
+import 'package:point_of_sale_flutter/presentation/home/dialog/tax_dialog.dart';
 import 'package:point_of_sale_flutter/presentation/home/pages/confirm_payment_page.dart';
 import 'package:point_of_sale_flutter/presentation/home/widgets/order_menu.dart';
 
-import '../../../core/assets/assets.gen.dart';
 import '../../../core/components/buttons.dart';
 import '../../../core/components/spaces.dart';
-import '../../../core/constants/colors.dart';
 import '../widgets/column_button.dart';
 import '../widgets/custom_tab_bar.dart';
 import '../widgets/home_title.dart';
@@ -582,17 +583,26 @@ class _HomePageState extends State<HomePage> {
                               ColumnButton(
                                 label: 'Diskon',
                                 svgGenImage: Assets.icons.diskon,
-                                onPressed: () {},
+                                onPressed: () => showDialog(
+                                  context: context,
+                                  builder: (context) => const DiscountDialog(),
+                                ),
                               ),
                               ColumnButton(
                                 label: 'Pajak',
                                 svgGenImage: Assets.icons.pajak,
-                                onPressed: () {},
+                                onPressed: () => showDialog(
+                                  context: context,
+                                  builder: (context) => const TaxDialog(),
+                                ),
                               ),
                               ColumnButton(
                                 label: 'Layanan',
                                 svgGenImage: Assets.icons.layanan,
-                                onPressed: () {},
+                                onPressed: () => showDialog(
+                                  context: context,
+                                  builder: (context) => const ServiceDialog(),
+                                ),
                               ),
                             ],
                           ),
