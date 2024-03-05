@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:point_of_sale_flutter/presentation/home/models/product_category.dart';
 import 'package:point_of_sale_flutter/presentation/home/widgets/custom_tab_bar.dart';
 import 'package:point_of_sale_flutter/presentation/setting/bloc/discount/discount_bloc.dart';
 import 'package:point_of_sale_flutter/presentation/setting/dialogs/form_discount_dialog.dart';
