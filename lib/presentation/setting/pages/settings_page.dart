@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:point_of_sale_flutter/core/assets/assets.gen.dart';
 import 'package:point_of_sale_flutter/core/components/spaces.dart';
 import 'package:point_of_sale_flutter/core/constants/colors.dart';
+import 'package:point_of_sale_flutter/presentation/setting/pages/discount_page.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -93,7 +94,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 child: IndexedStack(
                   index: currentIndex,
                   children: const [
-                    Text('discount'),
+                    DiscountPage(),
                     Text('print'),
                     Text('tax'),
                     // ManageDiscount(),
