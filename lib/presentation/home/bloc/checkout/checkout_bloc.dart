@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:point_of_sale_flutter/data/models/response/discount_response_model.dart';
 import 'package:point_of_sale_flutter/presentation/home/models/product_quantity.dart';
 
 import '../../../../../data/models/response/product_response_model.dart';
@@ -10,7 +11,7 @@ part 'checkout_state.dart';
 part 'checkout_bloc.freezed.dart';
 
 class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
-  CheckoutBloc() : super(const _Loaded([])) {
+  CheckoutBloc() : super(const _Loaded([], null, 11, 0)) {
     on<_AddItem>((event, emit) {
       var currentState = state as _Loaded;
 
@@ -18,7 +19,7 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
 
       var index =
           items.indexWhere((element) => element.product.id == event.product.id);
-      emit(_Loading());
+      emit(const _Loading());
       if (index != -1) {
         items[index] = ProductQuantity(
             product: event.product, quantity: items[index].quantity + 1);
@@ -30,7 +31,8 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
           ),
         );
       }
-      emit(_Loaded(items));
+      emit(_Loaded(items, currentState.discount, currentState.tax,
+          currentState.serviceCharge));
     });
 
     on<_RemoveItem>((event, emit) {
@@ -38,7 +40,7 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
       List<ProductQuantity> items = [...currentState.items];
       var index =
           items.indexWhere((element) => element.product.id == event.product.id);
-      emit(_Loading());
+      emit(const _Loading());
       if (index != -1) {
         if (items[index].quantity > 1) {
           items[index] = ProductQuantity(
@@ -47,11 +49,36 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
           items.removeAt(index);
         }
       }
-      emit(_Loaded(items));
+      emit(_Loaded(items, currentState.discount, currentState.tax,
+          currentState.serviceCharge));
     });
 
     on<_Started>((event, emit) {
-      emit(const _Loaded([]));
+      emit(const _Loaded([], null, 11, 0));
+    });
+
+    on<_AddDiscount>((event, emit) {
+      var currentState = state as _Loaded;
+      emit(_Loaded(currentState.items, event.discount, currentState.tax,
+          currentState.serviceCharge));
+    });
+
+    on<_RemoveDiscount>((event, emit) {
+      var currentState = state as _Loaded;
+      emit(_Loaded(currentState.items, null, currentState.tax,
+          currentState.serviceCharge));
+    });
+
+    on<_AddTax>((event, emit) {
+      var currentState = state as _Loaded;
+      emit(_Loaded(currentState.items, currentState.discount, event.tax,
+          currentState.serviceCharge));
+    });
+
+    on<_AddServiceCharge>((event, emit) {
+      var currentState = state as _Loaded;
+      emit(_Loaded(currentState.items, currentState.discount, currentState.tax,
+          event.serviceCharge));
     });
   }
 }

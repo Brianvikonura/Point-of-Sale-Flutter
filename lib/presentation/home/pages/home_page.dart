@@ -556,7 +556,8 @@ class _HomePageState extends State<HomePage> {
                                 orElse: () => const Center(
                                   child: Text('No Items'),
                                 ),
-                                loaded: (products) {
+                                loaded:
+                                    (products, discount, tax, serviceCharge) {
                                   if (products.isEmpty) {
                                     return const Center(
                                       child: Text('No Items'),
@@ -585,6 +586,7 @@ class _HomePageState extends State<HomePage> {
                                 svgGenImage: Assets.icons.diskon,
                                 onPressed: () => showDialog(
                                   context: context,
+                                  barrierDismissible: false,
                                   builder: (context) => const DiscountDialog(),
                                 ),
                               ),
@@ -609,36 +611,64 @@ class _HomePageState extends State<HomePage> {
                           const SpaceHeight(8.0),
                           const Divider(),
                           const SpaceHeight(8.0),
-                          const Row(
+                          Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(
+                              const Text(
                                 'Pajak',
                                 style: TextStyle(color: AppColors.grey),
                               ),
-                              Text(
-                                '11 %',
-                                style: TextStyle(
-                                  color: AppColors.primary,
-                                  fontWeight: FontWeight.w600,
-                                ),
+                              BlocBuilder<CheckoutBloc, CheckoutState>(
+                                builder: (context, state) {
+                                  final tax = state.maybeWhen(
+                                      orElse: () => 0,
+                                      loaded: (products, discount, tax,
+                                          serviceCharge) {
+                                        if (products.isEmpty) {
+                                          return 0;
+                                        }
+                                        return tax;
+                                      });
+                                  return Text(
+                                    '$tax %',
+                                    style: const TextStyle(
+                                      color: AppColors.primary,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  );
+                                },
                               ),
                             ],
                           ),
                           const SpaceHeight(8.0),
-                          const Row(
+                          Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(
+                              const Text(
                                 'Diskon',
                                 style: TextStyle(color: AppColors.grey),
                               ),
-                              Text(
-                                'Rp. 0',
-                                style: TextStyle(
-                                  color: AppColors.primary,
-                                  fontWeight: FontWeight.w600,
-                                ),
+                              BlocBuilder<CheckoutBloc, CheckoutState>(
+                                builder: (context, state) {
+                                  final discount = state.maybeWhen(
+                                      orElse: () => 0,
+                                      loaded: (products, discount, tax,
+                                          serviceCharge) {
+                                        if (discount == null) {
+                                          return 0;
+                                        }
+                                        return discount.value!
+                                            .replaceAll('.00', '')
+                                            .toIntegerFromText;
+                                      });
+                                  return Text(
+                                    '$discount %',
+                                    style: const TextStyle(
+                                      color: AppColors.primary,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  );
+                                },
                               ),
                             ],
                           ),
@@ -654,7 +684,8 @@ class _HomePageState extends State<HomePage> {
                                 builder: (context, state) {
                                   final price = state.maybeWhen(
                                       orElse: () => 0,
-                                      loaded: (products) {
+                                      loaded: (products, discount, tax,
+                                          serviceCharge) {
                                         if (products.isEmpty) {
                                           return 0;
                                         }

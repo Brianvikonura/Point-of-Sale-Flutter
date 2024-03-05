@@ -21,6 +21,10 @@ mixin _$CheckoutEvent {
     required TResult Function() started,
     required TResult Function(Product product) addItem,
     required TResult Function(Product product) removeItem,
+    required TResult Function(Discount discount) addDiscount,
+    required TResult Function() removeDiscount,
+    required TResult Function(int tax) addTax,
+    required TResult Function(int serviceCharge) addServiceCharge,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +32,10 @@ mixin _$CheckoutEvent {
     TResult? Function()? started,
     TResult? Function(Product product)? addItem,
     TResult? Function(Product product)? removeItem,
+    TResult? Function(Discount discount)? addDiscount,
+    TResult? Function()? removeDiscount,
+    TResult? Function(int tax)? addTax,
+    TResult? Function(int serviceCharge)? addServiceCharge,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +43,10 @@ mixin _$CheckoutEvent {
     TResult Function()? started,
     TResult Function(Product product)? addItem,
     TResult Function(Product product)? removeItem,
+    TResult Function(Discount discount)? addDiscount,
+    TResult Function()? removeDiscount,
+    TResult Function(int tax)? addTax,
+    TResult Function(int serviceCharge)? addServiceCharge,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +55,10 @@ mixin _$CheckoutEvent {
     required TResult Function(_Started value) started,
     required TResult Function(_AddItem value) addItem,
     required TResult Function(_RemoveItem value) removeItem,
+    required TResult Function(_AddDiscount value) addDiscount,
+    required TResult Function(_RemoveDiscount value) removeDiscount,
+    required TResult Function(_AddTax value) addTax,
+    required TResult Function(_AddServiceCharge value) addServiceCharge,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +66,10 @@ mixin _$CheckoutEvent {
     TResult? Function(_Started value)? started,
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_RemoveItem value)? removeItem,
+    TResult? Function(_AddDiscount value)? addDiscount,
+    TResult? Function(_RemoveDiscount value)? removeDiscount,
+    TResult? Function(_AddTax value)? addTax,
+    TResult? Function(_AddServiceCharge value)? addServiceCharge,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +77,10 @@ mixin _$CheckoutEvent {
     TResult Function(_Started value)? started,
     TResult Function(_AddItem value)? addItem,
     TResult Function(_RemoveItem value)? removeItem,
+    TResult Function(_AddDiscount value)? addDiscount,
+    TResult Function(_RemoveDiscount value)? removeDiscount,
+    TResult Function(_AddTax value)? addTax,
+    TResult Function(_AddServiceCharge value)? addServiceCharge,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -127,6 +151,10 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
     required TResult Function() started,
     required TResult Function(Product product) addItem,
     required TResult Function(Product product) removeItem,
+    required TResult Function(Discount discount) addDiscount,
+    required TResult Function() removeDiscount,
+    required TResult Function(int tax) addTax,
+    required TResult Function(int serviceCharge) addServiceCharge,
   }) {
     return started();
   }
@@ -137,6 +165,10 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
     TResult? Function()? started,
     TResult? Function(Product product)? addItem,
     TResult? Function(Product product)? removeItem,
+    TResult? Function(Discount discount)? addDiscount,
+    TResult? Function()? removeDiscount,
+    TResult? Function(int tax)? addTax,
+    TResult? Function(int serviceCharge)? addServiceCharge,
   }) {
     return started?.call();
   }
@@ -147,6 +179,10 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
     TResult Function()? started,
     TResult Function(Product product)? addItem,
     TResult Function(Product product)? removeItem,
+    TResult Function(Discount discount)? addDiscount,
+    TResult Function()? removeDiscount,
+    TResult Function(int tax)? addTax,
+    TResult Function(int serviceCharge)? addServiceCharge,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -161,6 +197,10 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
     required TResult Function(_Started value) started,
     required TResult Function(_AddItem value) addItem,
     required TResult Function(_RemoveItem value) removeItem,
+    required TResult Function(_AddDiscount value) addDiscount,
+    required TResult Function(_RemoveDiscount value) removeDiscount,
+    required TResult Function(_AddTax value) addTax,
+    required TResult Function(_AddServiceCharge value) addServiceCharge,
   }) {
     return started(this);
   }
@@ -171,6 +211,10 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
     TResult? Function(_Started value)? started,
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_RemoveItem value)? removeItem,
+    TResult? Function(_AddDiscount value)? addDiscount,
+    TResult? Function(_RemoveDiscount value)? removeDiscount,
+    TResult? Function(_AddTax value)? addTax,
+    TResult? Function(_AddServiceCharge value)? addServiceCharge,
   }) {
     return started?.call(this);
   }
@@ -181,6 +225,10 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
     TResult Function(_Started value)? started,
     TResult Function(_AddItem value)? addItem,
     TResult Function(_RemoveItem value)? removeItem,
+    TResult Function(_AddDiscount value)? addDiscount,
+    TResult Function(_RemoveDiscount value)? removeDiscount,
+    TResult Function(_AddTax value)? addTax,
+    TResult Function(_AddServiceCharge value)? addServiceCharge,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -269,6 +317,10 @@ class _$AddItemImpl with DiagnosticableTreeMixin implements _AddItem {
     required TResult Function() started,
     required TResult Function(Product product) addItem,
     required TResult Function(Product product) removeItem,
+    required TResult Function(Discount discount) addDiscount,
+    required TResult Function() removeDiscount,
+    required TResult Function(int tax) addTax,
+    required TResult Function(int serviceCharge) addServiceCharge,
   }) {
     return addItem(product);
   }
@@ -279,6 +331,10 @@ class _$AddItemImpl with DiagnosticableTreeMixin implements _AddItem {
     TResult? Function()? started,
     TResult? Function(Product product)? addItem,
     TResult? Function(Product product)? removeItem,
+    TResult? Function(Discount discount)? addDiscount,
+    TResult? Function()? removeDiscount,
+    TResult? Function(int tax)? addTax,
+    TResult? Function(int serviceCharge)? addServiceCharge,
   }) {
     return addItem?.call(product);
   }
@@ -289,6 +345,10 @@ class _$AddItemImpl with DiagnosticableTreeMixin implements _AddItem {
     TResult Function()? started,
     TResult Function(Product product)? addItem,
     TResult Function(Product product)? removeItem,
+    TResult Function(Discount discount)? addDiscount,
+    TResult Function()? removeDiscount,
+    TResult Function(int tax)? addTax,
+    TResult Function(int serviceCharge)? addServiceCharge,
     required TResult orElse(),
   }) {
     if (addItem != null) {
@@ -303,6 +363,10 @@ class _$AddItemImpl with DiagnosticableTreeMixin implements _AddItem {
     required TResult Function(_Started value) started,
     required TResult Function(_AddItem value) addItem,
     required TResult Function(_RemoveItem value) removeItem,
+    required TResult Function(_AddDiscount value) addDiscount,
+    required TResult Function(_RemoveDiscount value) removeDiscount,
+    required TResult Function(_AddTax value) addTax,
+    required TResult Function(_AddServiceCharge value) addServiceCharge,
   }) {
     return addItem(this);
   }
@@ -313,6 +377,10 @@ class _$AddItemImpl with DiagnosticableTreeMixin implements _AddItem {
     TResult? Function(_Started value)? started,
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_RemoveItem value)? removeItem,
+    TResult? Function(_AddDiscount value)? addDiscount,
+    TResult? Function(_RemoveDiscount value)? removeDiscount,
+    TResult? Function(_AddTax value)? addTax,
+    TResult? Function(_AddServiceCharge value)? addServiceCharge,
   }) {
     return addItem?.call(this);
   }
@@ -323,6 +391,10 @@ class _$AddItemImpl with DiagnosticableTreeMixin implements _AddItem {
     TResult Function(_Started value)? started,
     TResult Function(_AddItem value)? addItem,
     TResult Function(_RemoveItem value)? removeItem,
+    TResult Function(_AddDiscount value)? addDiscount,
+    TResult Function(_RemoveDiscount value)? removeDiscount,
+    TResult Function(_AddTax value)? addTax,
+    TResult Function(_AddServiceCharge value)? addServiceCharge,
     required TResult orElse(),
   }) {
     if (addItem != null) {
@@ -416,6 +488,10 @@ class _$RemoveItemImpl with DiagnosticableTreeMixin implements _RemoveItem {
     required TResult Function() started,
     required TResult Function(Product product) addItem,
     required TResult Function(Product product) removeItem,
+    required TResult Function(Discount discount) addDiscount,
+    required TResult Function() removeDiscount,
+    required TResult Function(int tax) addTax,
+    required TResult Function(int serviceCharge) addServiceCharge,
   }) {
     return removeItem(product);
   }
@@ -426,6 +502,10 @@ class _$RemoveItemImpl with DiagnosticableTreeMixin implements _RemoveItem {
     TResult? Function()? started,
     TResult? Function(Product product)? addItem,
     TResult? Function(Product product)? removeItem,
+    TResult? Function(Discount discount)? addDiscount,
+    TResult? Function()? removeDiscount,
+    TResult? Function(int tax)? addTax,
+    TResult? Function(int serviceCharge)? addServiceCharge,
   }) {
     return removeItem?.call(product);
   }
@@ -436,6 +516,10 @@ class _$RemoveItemImpl with DiagnosticableTreeMixin implements _RemoveItem {
     TResult Function()? started,
     TResult Function(Product product)? addItem,
     TResult Function(Product product)? removeItem,
+    TResult Function(Discount discount)? addDiscount,
+    TResult Function()? removeDiscount,
+    TResult Function(int tax)? addTax,
+    TResult Function(int serviceCharge)? addServiceCharge,
     required TResult orElse(),
   }) {
     if (removeItem != null) {
@@ -450,6 +534,10 @@ class _$RemoveItemImpl with DiagnosticableTreeMixin implements _RemoveItem {
     required TResult Function(_Started value) started,
     required TResult Function(_AddItem value) addItem,
     required TResult Function(_RemoveItem value) removeItem,
+    required TResult Function(_AddDiscount value) addDiscount,
+    required TResult Function(_RemoveDiscount value) removeDiscount,
+    required TResult Function(_AddTax value) addTax,
+    required TResult Function(_AddServiceCharge value) addServiceCharge,
   }) {
     return removeItem(this);
   }
@@ -460,6 +548,10 @@ class _$RemoveItemImpl with DiagnosticableTreeMixin implements _RemoveItem {
     TResult? Function(_Started value)? started,
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_RemoveItem value)? removeItem,
+    TResult? Function(_AddDiscount value)? addDiscount,
+    TResult? Function(_RemoveDiscount value)? removeDiscount,
+    TResult? Function(_AddTax value)? addTax,
+    TResult? Function(_AddServiceCharge value)? addServiceCharge,
   }) {
     return removeItem?.call(this);
   }
@@ -470,6 +562,10 @@ class _$RemoveItemImpl with DiagnosticableTreeMixin implements _RemoveItem {
     TResult Function(_Started value)? started,
     TResult Function(_AddItem value)? addItem,
     TResult Function(_RemoveItem value)? removeItem,
+    TResult Function(_AddDiscount value)? addDiscount,
+    TResult Function(_RemoveDiscount value)? removeDiscount,
+    TResult Function(_AddTax value)? addTax,
+    TResult Function(_AddServiceCharge value)? addServiceCharge,
     required TResult orElse(),
   }) {
     if (removeItem != null) {
@@ -489,12 +585,673 @@ abstract class _RemoveItem implements CheckoutEvent {
 }
 
 /// @nodoc
+abstract class _$$AddDiscountImplCopyWith<$Res> {
+  factory _$$AddDiscountImplCopyWith(
+          _$AddDiscountImpl value, $Res Function(_$AddDiscountImpl) then) =
+      __$$AddDiscountImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Discount discount});
+}
+
+/// @nodoc
+class __$$AddDiscountImplCopyWithImpl<$Res>
+    extends _$CheckoutEventCopyWithImpl<$Res, _$AddDiscountImpl>
+    implements _$$AddDiscountImplCopyWith<$Res> {
+  __$$AddDiscountImplCopyWithImpl(
+      _$AddDiscountImpl _value, $Res Function(_$AddDiscountImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? discount = null,
+  }) {
+    return _then(_$AddDiscountImpl(
+      null == discount
+          ? _value.discount
+          : discount // ignore: cast_nullable_to_non_nullable
+              as Discount,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AddDiscountImpl with DiagnosticableTreeMixin implements _AddDiscount {
+  const _$AddDiscountImpl(this.discount);
+
+  @override
+  final Discount discount;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'CheckoutEvent.addDiscount(discount: $discount)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'CheckoutEvent.addDiscount'))
+      ..add(DiagnosticsProperty('discount', discount));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddDiscountImpl &&
+            (identical(other.discount, discount) ||
+                other.discount == discount));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, discount);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddDiscountImplCopyWith<_$AddDiscountImpl> get copyWith =>
+      __$$AddDiscountImplCopyWithImpl<_$AddDiscountImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(Product product) addItem,
+    required TResult Function(Product product) removeItem,
+    required TResult Function(Discount discount) addDiscount,
+    required TResult Function() removeDiscount,
+    required TResult Function(int tax) addTax,
+    required TResult Function(int serviceCharge) addServiceCharge,
+  }) {
+    return addDiscount(discount);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(Product product)? addItem,
+    TResult? Function(Product product)? removeItem,
+    TResult? Function(Discount discount)? addDiscount,
+    TResult? Function()? removeDiscount,
+    TResult? Function(int tax)? addTax,
+    TResult? Function(int serviceCharge)? addServiceCharge,
+  }) {
+    return addDiscount?.call(discount);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(Product product)? addItem,
+    TResult Function(Product product)? removeItem,
+    TResult Function(Discount discount)? addDiscount,
+    TResult Function()? removeDiscount,
+    TResult Function(int tax)? addTax,
+    TResult Function(int serviceCharge)? addServiceCharge,
+    required TResult orElse(),
+  }) {
+    if (addDiscount != null) {
+      return addDiscount(discount);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_AddItem value) addItem,
+    required TResult Function(_RemoveItem value) removeItem,
+    required TResult Function(_AddDiscount value) addDiscount,
+    required TResult Function(_RemoveDiscount value) removeDiscount,
+    required TResult Function(_AddTax value) addTax,
+    required TResult Function(_AddServiceCharge value) addServiceCharge,
+  }) {
+    return addDiscount(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_AddItem value)? addItem,
+    TResult? Function(_RemoveItem value)? removeItem,
+    TResult? Function(_AddDiscount value)? addDiscount,
+    TResult? Function(_RemoveDiscount value)? removeDiscount,
+    TResult? Function(_AddTax value)? addTax,
+    TResult? Function(_AddServiceCharge value)? addServiceCharge,
+  }) {
+    return addDiscount?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_AddItem value)? addItem,
+    TResult Function(_RemoveItem value)? removeItem,
+    TResult Function(_AddDiscount value)? addDiscount,
+    TResult Function(_RemoveDiscount value)? removeDiscount,
+    TResult Function(_AddTax value)? addTax,
+    TResult Function(_AddServiceCharge value)? addServiceCharge,
+    required TResult orElse(),
+  }) {
+    if (addDiscount != null) {
+      return addDiscount(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddDiscount implements CheckoutEvent {
+  const factory _AddDiscount(final Discount discount) = _$AddDiscountImpl;
+
+  Discount get discount;
+  @JsonKey(ignore: true)
+  _$$AddDiscountImplCopyWith<_$AddDiscountImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RemoveDiscountImplCopyWith<$Res> {
+  factory _$$RemoveDiscountImplCopyWith(_$RemoveDiscountImpl value,
+          $Res Function(_$RemoveDiscountImpl) then) =
+      __$$RemoveDiscountImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$RemoveDiscountImplCopyWithImpl<$Res>
+    extends _$CheckoutEventCopyWithImpl<$Res, _$RemoveDiscountImpl>
+    implements _$$RemoveDiscountImplCopyWith<$Res> {
+  __$$RemoveDiscountImplCopyWithImpl(
+      _$RemoveDiscountImpl _value, $Res Function(_$RemoveDiscountImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$RemoveDiscountImpl
+    with DiagnosticableTreeMixin
+    implements _RemoveDiscount {
+  const _$RemoveDiscountImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'CheckoutEvent.removeDiscount()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'CheckoutEvent.removeDiscount'));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$RemoveDiscountImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(Product product) addItem,
+    required TResult Function(Product product) removeItem,
+    required TResult Function(Discount discount) addDiscount,
+    required TResult Function() removeDiscount,
+    required TResult Function(int tax) addTax,
+    required TResult Function(int serviceCharge) addServiceCharge,
+  }) {
+    return removeDiscount();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(Product product)? addItem,
+    TResult? Function(Product product)? removeItem,
+    TResult? Function(Discount discount)? addDiscount,
+    TResult? Function()? removeDiscount,
+    TResult? Function(int tax)? addTax,
+    TResult? Function(int serviceCharge)? addServiceCharge,
+  }) {
+    return removeDiscount?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(Product product)? addItem,
+    TResult Function(Product product)? removeItem,
+    TResult Function(Discount discount)? addDiscount,
+    TResult Function()? removeDiscount,
+    TResult Function(int tax)? addTax,
+    TResult Function(int serviceCharge)? addServiceCharge,
+    required TResult orElse(),
+  }) {
+    if (removeDiscount != null) {
+      return removeDiscount();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_AddItem value) addItem,
+    required TResult Function(_RemoveItem value) removeItem,
+    required TResult Function(_AddDiscount value) addDiscount,
+    required TResult Function(_RemoveDiscount value) removeDiscount,
+    required TResult Function(_AddTax value) addTax,
+    required TResult Function(_AddServiceCharge value) addServiceCharge,
+  }) {
+    return removeDiscount(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_AddItem value)? addItem,
+    TResult? Function(_RemoveItem value)? removeItem,
+    TResult? Function(_AddDiscount value)? addDiscount,
+    TResult? Function(_RemoveDiscount value)? removeDiscount,
+    TResult? Function(_AddTax value)? addTax,
+    TResult? Function(_AddServiceCharge value)? addServiceCharge,
+  }) {
+    return removeDiscount?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_AddItem value)? addItem,
+    TResult Function(_RemoveItem value)? removeItem,
+    TResult Function(_AddDiscount value)? addDiscount,
+    TResult Function(_RemoveDiscount value)? removeDiscount,
+    TResult Function(_AddTax value)? addTax,
+    TResult Function(_AddServiceCharge value)? addServiceCharge,
+    required TResult orElse(),
+  }) {
+    if (removeDiscount != null) {
+      return removeDiscount(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RemoveDiscount implements CheckoutEvent {
+  const factory _RemoveDiscount() = _$RemoveDiscountImpl;
+}
+
+/// @nodoc
+abstract class _$$AddTaxImplCopyWith<$Res> {
+  factory _$$AddTaxImplCopyWith(
+          _$AddTaxImpl value, $Res Function(_$AddTaxImpl) then) =
+      __$$AddTaxImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int tax});
+}
+
+/// @nodoc
+class __$$AddTaxImplCopyWithImpl<$Res>
+    extends _$CheckoutEventCopyWithImpl<$Res, _$AddTaxImpl>
+    implements _$$AddTaxImplCopyWith<$Res> {
+  __$$AddTaxImplCopyWithImpl(
+      _$AddTaxImpl _value, $Res Function(_$AddTaxImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? tax = null,
+  }) {
+    return _then(_$AddTaxImpl(
+      null == tax
+          ? _value.tax
+          : tax // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AddTaxImpl with DiagnosticableTreeMixin implements _AddTax {
+  const _$AddTaxImpl(this.tax);
+
+  @override
+  final int tax;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'CheckoutEvent.addTax(tax: $tax)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'CheckoutEvent.addTax'))
+      ..add(DiagnosticsProperty('tax', tax));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddTaxImpl &&
+            (identical(other.tax, tax) || other.tax == tax));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, tax);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddTaxImplCopyWith<_$AddTaxImpl> get copyWith =>
+      __$$AddTaxImplCopyWithImpl<_$AddTaxImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(Product product) addItem,
+    required TResult Function(Product product) removeItem,
+    required TResult Function(Discount discount) addDiscount,
+    required TResult Function() removeDiscount,
+    required TResult Function(int tax) addTax,
+    required TResult Function(int serviceCharge) addServiceCharge,
+  }) {
+    return addTax(tax);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(Product product)? addItem,
+    TResult? Function(Product product)? removeItem,
+    TResult? Function(Discount discount)? addDiscount,
+    TResult? Function()? removeDiscount,
+    TResult? Function(int tax)? addTax,
+    TResult? Function(int serviceCharge)? addServiceCharge,
+  }) {
+    return addTax?.call(tax);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(Product product)? addItem,
+    TResult Function(Product product)? removeItem,
+    TResult Function(Discount discount)? addDiscount,
+    TResult Function()? removeDiscount,
+    TResult Function(int tax)? addTax,
+    TResult Function(int serviceCharge)? addServiceCharge,
+    required TResult orElse(),
+  }) {
+    if (addTax != null) {
+      return addTax(tax);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_AddItem value) addItem,
+    required TResult Function(_RemoveItem value) removeItem,
+    required TResult Function(_AddDiscount value) addDiscount,
+    required TResult Function(_RemoveDiscount value) removeDiscount,
+    required TResult Function(_AddTax value) addTax,
+    required TResult Function(_AddServiceCharge value) addServiceCharge,
+  }) {
+    return addTax(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_AddItem value)? addItem,
+    TResult? Function(_RemoveItem value)? removeItem,
+    TResult? Function(_AddDiscount value)? addDiscount,
+    TResult? Function(_RemoveDiscount value)? removeDiscount,
+    TResult? Function(_AddTax value)? addTax,
+    TResult? Function(_AddServiceCharge value)? addServiceCharge,
+  }) {
+    return addTax?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_AddItem value)? addItem,
+    TResult Function(_RemoveItem value)? removeItem,
+    TResult Function(_AddDiscount value)? addDiscount,
+    TResult Function(_RemoveDiscount value)? removeDiscount,
+    TResult Function(_AddTax value)? addTax,
+    TResult Function(_AddServiceCharge value)? addServiceCharge,
+    required TResult orElse(),
+  }) {
+    if (addTax != null) {
+      return addTax(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddTax implements CheckoutEvent {
+  const factory _AddTax(final int tax) = _$AddTaxImpl;
+
+  int get tax;
+  @JsonKey(ignore: true)
+  _$$AddTaxImplCopyWith<_$AddTaxImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AddServiceChargeImplCopyWith<$Res> {
+  factory _$$AddServiceChargeImplCopyWith(_$AddServiceChargeImpl value,
+          $Res Function(_$AddServiceChargeImpl) then) =
+      __$$AddServiceChargeImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int serviceCharge});
+}
+
+/// @nodoc
+class __$$AddServiceChargeImplCopyWithImpl<$Res>
+    extends _$CheckoutEventCopyWithImpl<$Res, _$AddServiceChargeImpl>
+    implements _$$AddServiceChargeImplCopyWith<$Res> {
+  __$$AddServiceChargeImplCopyWithImpl(_$AddServiceChargeImpl _value,
+      $Res Function(_$AddServiceChargeImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? serviceCharge = null,
+  }) {
+    return _then(_$AddServiceChargeImpl(
+      null == serviceCharge
+          ? _value.serviceCharge
+          : serviceCharge // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AddServiceChargeImpl
+    with DiagnosticableTreeMixin
+    implements _AddServiceCharge {
+  const _$AddServiceChargeImpl(this.serviceCharge);
+
+  @override
+  final int serviceCharge;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'CheckoutEvent.addServiceCharge(serviceCharge: $serviceCharge)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'CheckoutEvent.addServiceCharge'))
+      ..add(DiagnosticsProperty('serviceCharge', serviceCharge));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddServiceChargeImpl &&
+            (identical(other.serviceCharge, serviceCharge) ||
+                other.serviceCharge == serviceCharge));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, serviceCharge);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddServiceChargeImplCopyWith<_$AddServiceChargeImpl> get copyWith =>
+      __$$AddServiceChargeImplCopyWithImpl<_$AddServiceChargeImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(Product product) addItem,
+    required TResult Function(Product product) removeItem,
+    required TResult Function(Discount discount) addDiscount,
+    required TResult Function() removeDiscount,
+    required TResult Function(int tax) addTax,
+    required TResult Function(int serviceCharge) addServiceCharge,
+  }) {
+    return addServiceCharge(serviceCharge);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(Product product)? addItem,
+    TResult? Function(Product product)? removeItem,
+    TResult? Function(Discount discount)? addDiscount,
+    TResult? Function()? removeDiscount,
+    TResult? Function(int tax)? addTax,
+    TResult? Function(int serviceCharge)? addServiceCharge,
+  }) {
+    return addServiceCharge?.call(serviceCharge);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(Product product)? addItem,
+    TResult Function(Product product)? removeItem,
+    TResult Function(Discount discount)? addDiscount,
+    TResult Function()? removeDiscount,
+    TResult Function(int tax)? addTax,
+    TResult Function(int serviceCharge)? addServiceCharge,
+    required TResult orElse(),
+  }) {
+    if (addServiceCharge != null) {
+      return addServiceCharge(serviceCharge);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_AddItem value) addItem,
+    required TResult Function(_RemoveItem value) removeItem,
+    required TResult Function(_AddDiscount value) addDiscount,
+    required TResult Function(_RemoveDiscount value) removeDiscount,
+    required TResult Function(_AddTax value) addTax,
+    required TResult Function(_AddServiceCharge value) addServiceCharge,
+  }) {
+    return addServiceCharge(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_AddItem value)? addItem,
+    TResult? Function(_RemoveItem value)? removeItem,
+    TResult? Function(_AddDiscount value)? addDiscount,
+    TResult? Function(_RemoveDiscount value)? removeDiscount,
+    TResult? Function(_AddTax value)? addTax,
+    TResult? Function(_AddServiceCharge value)? addServiceCharge,
+  }) {
+    return addServiceCharge?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_AddItem value)? addItem,
+    TResult Function(_RemoveItem value)? removeItem,
+    TResult Function(_AddDiscount value)? addDiscount,
+    TResult Function(_RemoveDiscount value)? removeDiscount,
+    TResult Function(_AddTax value)? addTax,
+    TResult Function(_AddServiceCharge value)? addServiceCharge,
+    required TResult orElse(),
+  }) {
+    if (addServiceCharge != null) {
+      return addServiceCharge(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddServiceCharge implements CheckoutEvent {
+  const factory _AddServiceCharge(final int serviceCharge) =
+      _$AddServiceChargeImpl;
+
+  int get serviceCharge;
+  @JsonKey(ignore: true)
+  _$$AddServiceChargeImplCopyWith<_$AddServiceChargeImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$CheckoutState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<ProductQuantity> items) loaded,
+    required TResult Function(List<ProductQuantity> items, Discount? discount,
+            int tax, int serviceCharge)
+        loaded,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -502,7 +1259,9 @@ mixin _$CheckoutState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<ProductQuantity> items)? loaded,
+    TResult? Function(List<ProductQuantity> items, Discount? discount, int tax,
+            int serviceCharge)?
+        loaded,
     TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -510,7 +1269,9 @@ mixin _$CheckoutState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<ProductQuantity> items)? loaded,
+    TResult Function(List<ProductQuantity> items, Discount? discount, int tax,
+            int serviceCharge)?
+        loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -606,7 +1367,9 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<ProductQuantity> items) loaded,
+    required TResult Function(List<ProductQuantity> items, Discount? discount,
+            int tax, int serviceCharge)
+        loaded,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -617,7 +1380,9 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<ProductQuantity> items)? loaded,
+    TResult? Function(List<ProductQuantity> items, Discount? discount, int tax,
+            int serviceCharge)?
+        loaded,
     TResult? Function(String message)? error,
   }) {
     return initial?.call();
@@ -628,7 +1393,9 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<ProductQuantity> items)? loaded,
+    TResult Function(List<ProductQuantity> items, Discount? discount, int tax,
+            int serviceCharge)?
+        loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -726,7 +1493,9 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<ProductQuantity> items) loaded,
+    required TResult Function(List<ProductQuantity> items, Discount? discount,
+            int tax, int serviceCharge)
+        loaded,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -737,7 +1506,9 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<ProductQuantity> items)? loaded,
+    TResult? Function(List<ProductQuantity> items, Discount? discount, int tax,
+            int serviceCharge)?
+        loaded,
     TResult? Function(String message)? error,
   }) {
     return loading?.call();
@@ -748,7 +1519,9 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<ProductQuantity> items)? loaded,
+    TResult Function(List<ProductQuantity> items, Discount? discount, int tax,
+            int serviceCharge)?
+        loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -806,7 +1579,11 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<ProductQuantity> items});
+  $Res call(
+      {List<ProductQuantity> items,
+      Discount? discount,
+      int tax,
+      int serviceCharge});
 }
 
 /// @nodoc
@@ -821,12 +1598,27 @@ class __$$LoadedImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? items = null,
+    Object? discount = freezed,
+    Object? tax = null,
+    Object? serviceCharge = null,
   }) {
     return _then(_$LoadedImpl(
       null == items
           ? _value._items
           : items // ignore: cast_nullable_to_non_nullable
               as List<ProductQuantity>,
+      freezed == discount
+          ? _value.discount
+          : discount // ignore: cast_nullable_to_non_nullable
+              as Discount?,
+      null == tax
+          ? _value.tax
+          : tax // ignore: cast_nullable_to_non_nullable
+              as int,
+      null == serviceCharge
+          ? _value.serviceCharge
+          : serviceCharge // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -834,7 +1626,9 @@ class __$$LoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedImpl with DiagnosticableTreeMixin implements _Loaded {
-  const _$LoadedImpl(final List<ProductQuantity> items) : _items = items;
+  const _$LoadedImpl(final List<ProductQuantity> items, this.discount, this.tax,
+      this.serviceCharge)
+      : _items = items;
 
   final List<ProductQuantity> _items;
   @override
@@ -845,8 +1639,15 @@ class _$LoadedImpl with DiagnosticableTreeMixin implements _Loaded {
   }
 
   @override
+  final Discount? discount;
+  @override
+  final int tax;
+  @override
+  final int serviceCharge;
+
+  @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CheckoutState.loaded(items: $items)';
+    return 'CheckoutState.loaded(items: $items, discount: $discount, tax: $tax, serviceCharge: $serviceCharge)';
   }
 
   @override
@@ -854,7 +1655,10 @@ class _$LoadedImpl with DiagnosticableTreeMixin implements _Loaded {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'CheckoutState.loaded'))
-      ..add(DiagnosticsProperty('items', items));
+      ..add(DiagnosticsProperty('items', items))
+      ..add(DiagnosticsProperty('discount', discount))
+      ..add(DiagnosticsProperty('tax', tax))
+      ..add(DiagnosticsProperty('serviceCharge', serviceCharge));
   }
 
   @override
@@ -862,12 +1666,21 @@ class _$LoadedImpl with DiagnosticableTreeMixin implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
-            const DeepCollectionEquality().equals(other._items, _items));
+            const DeepCollectionEquality().equals(other._items, _items) &&
+            (identical(other.discount, discount) ||
+                other.discount == discount) &&
+            (identical(other.tax, tax) || other.tax == tax) &&
+            (identical(other.serviceCharge, serviceCharge) ||
+                other.serviceCharge == serviceCharge));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_items));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_items),
+      discount,
+      tax,
+      serviceCharge);
 
   @JsonKey(ignore: true)
   @override
@@ -880,10 +1693,12 @@ class _$LoadedImpl with DiagnosticableTreeMixin implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<ProductQuantity> items) loaded,
+    required TResult Function(List<ProductQuantity> items, Discount? discount,
+            int tax, int serviceCharge)
+        loaded,
     required TResult Function(String message) error,
   }) {
-    return loaded(items);
+    return loaded(items, discount, tax, serviceCharge);
   }
 
   @override
@@ -891,10 +1706,12 @@ class _$LoadedImpl with DiagnosticableTreeMixin implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<ProductQuantity> items)? loaded,
+    TResult? Function(List<ProductQuantity> items, Discount? discount, int tax,
+            int serviceCharge)?
+        loaded,
     TResult? Function(String message)? error,
   }) {
-    return loaded?.call(items);
+    return loaded?.call(items, discount, tax, serviceCharge);
   }
 
   @override
@@ -902,12 +1719,14 @@ class _$LoadedImpl with DiagnosticableTreeMixin implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<ProductQuantity> items)? loaded,
+    TResult Function(List<ProductQuantity> items, Discount? discount, int tax,
+            int serviceCharge)?
+        loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(items);
+      return loaded(items, discount, tax, serviceCharge);
     }
     return orElse();
   }
@@ -951,9 +1770,16 @@ class _$LoadedImpl with DiagnosticableTreeMixin implements _Loaded {
 }
 
 abstract class _Loaded implements CheckoutState {
-  const factory _Loaded(final List<ProductQuantity> items) = _$LoadedImpl;
+  const factory _Loaded(
+      final List<ProductQuantity> items,
+      final Discount? discount,
+      final int tax,
+      final int serviceCharge) = _$LoadedImpl;
 
   List<ProductQuantity> get items;
+  Discount? get discount;
+  int get tax;
+  int get serviceCharge;
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1033,7 +1859,9 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<ProductQuantity> items) loaded,
+    required TResult Function(List<ProductQuantity> items, Discount? discount,
+            int tax, int serviceCharge)
+        loaded,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -1044,7 +1872,9 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<ProductQuantity> items)? loaded,
+    TResult? Function(List<ProductQuantity> items, Discount? discount, int tax,
+            int serviceCharge)?
+        loaded,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -1055,7 +1885,9 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<ProductQuantity> items)? loaded,
+    TResult Function(List<ProductQuantity> items, Discount? discount, int tax,
+            int serviceCharge)?
+        loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {

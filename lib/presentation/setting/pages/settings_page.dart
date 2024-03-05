@@ -3,6 +3,7 @@ import 'package:point_of_sale_flutter/core/assets/assets.gen.dart';
 import 'package:point_of_sale_flutter/core/components/spaces.dart';
 import 'package:point_of_sale_flutter/core/constants/colors.dart';
 import 'package:point_of_sale_flutter/presentation/setting/pages/discount_page.dart';
+import 'package:point_of_sale_flutter/presentation/setting/pages/sync_data_page.dart';
 import 'package:point_of_sale_flutter/presentation/setting/pages/tax_page.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -96,7 +97,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   index: currentIndex,
                   children: const [
                     DiscountPage(),
-                    Text('print'),
+                    SyncDataPage(),
                     TaxPage(),
                   ],
                 ),
