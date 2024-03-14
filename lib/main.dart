@@ -11,6 +11,7 @@ import 'package:point_of_sale_flutter/presentation/auth/login_page.dart';
 import 'package:point_of_sale_flutter/presentation/home/bloc/checkout/checkout_bloc.dart';
 import 'package:point_of_sale_flutter/presentation/home/bloc/local_product/local_product_bloc.dart';
 import 'package:point_of_sale_flutter/presentation/home/bloc/order/order_bloc.dart';
+import 'package:point_of_sale_flutter/presentation/setting/bloc/add_discount/add_discount_bloc.dart';
 import 'package:point_of_sale_flutter/presentation/setting/bloc/discount/discount_bloc.dart';
 import 'package:point_of_sale_flutter/presentation/setting/bloc/sync_order/sync_order_bloc.dart';
 import 'package:point_of_sale_flutter/presentation/setting/bloc/sync_product/sync_product_bloc.dart';
@@ -57,6 +58,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => DiscountBloc(DiscountRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) => AddDiscountBloc(DiscountRemoteDatasource()),
         ),
       ],
       child: MaterialApp(
