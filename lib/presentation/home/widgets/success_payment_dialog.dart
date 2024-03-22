@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:point_of_sale_flutter/core/components/buttons.dart';
 import 'package:point_of_sale_flutter/core/components/spaces.dart';
+import 'package:point_of_sale_flutter/data/dataoutputs/print_dataoutputs.dart';
 import 'package:point_of_sale_flutter/presentation/home/bloc/checkout/checkout_bloc.dart';
 import 'package:point_of_sale_flutter/presentation/home/bloc/order/order_bloc.dart';
 import 'package:print_bluetooth_thermal/print_bluetooth_thermal.dart';
@@ -147,15 +148,16 @@ class _SuccessPaymentDialogState extends State<SuccessPaymentDialog> {
                 Flexible(
                   child: Button.filled(
                     onPressed: () async {
-                      //   final printValue = await CwbPrint.instance.printOrder(
-                      //     data,
-                      //     totalQty,
-                      //     totalPrice,
-                      //     'Tunai',
-                      //     totalPrice,
-                      //     'Brian's Restaurant',
-                      //   );
-                      //   await PrintBluetoothThermal.writeBytes(printValue);
+                      final printValue =
+                          await PrintDataOutputs.instance.printOrder(
+                        data,
+                        totalQty,
+                        totalPrice,
+                        'Tunai',
+                        totalPrice,
+                        'Brian Viko Nura',
+                      );
+                      await PrintBluetoothThermal.writeBytes(printValue);
                     },
                     label: 'Print',
                   ),

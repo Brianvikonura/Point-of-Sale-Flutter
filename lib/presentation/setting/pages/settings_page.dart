@@ -3,6 +3,7 @@ import 'package:point_of_sale_flutter/core/assets/assets.gen.dart';
 import 'package:point_of_sale_flutter/core/components/spaces.dart';
 import 'package:point_of_sale_flutter/core/constants/colors.dart';
 import 'package:point_of_sale_flutter/presentation/setting/pages/discount_page.dart';
+import 'package:point_of_sale_flutter/presentation/setting/pages/manage_printer_page.dart';
 import 'package:point_of_sale_flutter/presentation/setting/pages/sync_data_page.dart';
 import 'package:point_of_sale_flutter/presentation/setting/pages/tax_page.dart';
 
@@ -81,6 +82,18 @@ class _SettingsPageState extends State<SettingsPage> {
                         : Colors.transparent,
                     onTap: () => indexValue(2),
                   ),
+                  ListTile(
+                    contentPadding: const EdgeInsets.all(12.0),
+                    leading: Assets.icons.kelolaPajak.svg(),
+                    title: const Text('Sync Data'),
+                    subtitle:
+                        const Text('Sinkronisasi data dari dan ke server'),
+                    textColor: AppColors.primary,
+                    tileColor: currentIndex == 3
+                        ? AppColors.blueLight
+                        : Colors.transparent,
+                    onTap: () => indexValue(3),
+                  ),
                 ],
               ),
             ),
@@ -97,8 +110,9 @@ class _SettingsPageState extends State<SettingsPage> {
                   index: currentIndex,
                   children: const [
                     DiscountPage(),
-                    SyncDataPage(),
+                    ManagePrinterPage(),
                     TaxPage(),
+                    SyncDataPage(),
                   ],
                 ),
               ),
