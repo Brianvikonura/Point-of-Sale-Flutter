@@ -16,21 +16,6 @@ class ManagePrinterPage extends StatefulWidget {
 
 class _ManagePrinterPageState extends State<ManagePrinterPage> {
   int selectedIndex = 0;
-  // final List<PrinterModel> datas = [
-  //   PrinterModel(
-  //     name: 'Galaxy A30',
-  //     address: 12324567412,
-  //   ),
-  //   PrinterModel(
-  //     name: 'Galaxy A30',
-  //     address: 12324567412,
-  //   ),
-  //   PrinterModel(
-  //     name: 'Galaxy A30',
-  //     address: 12324567412,
-  //   ),
-  // ];
-
   String macName = '';
 
   String _info = "";
@@ -103,7 +88,7 @@ class _ManagePrinterPageState extends State<ManagePrinterPage> {
 
     if (listResult.isEmpty) {
       _msj =
-          "There are no bluetoohs linked, go to settings and link the printer";
+          "There are no Bluetooth linked, go to settings and link the printer";
     } else {
       _msj = "Touch an item in the list to connect";
     }

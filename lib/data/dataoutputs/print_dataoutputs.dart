@@ -1,7 +1,7 @@
 import 'package:esc_pos_utils_plus/esc_pos_utils_plus.dart';
 import 'package:intl/intl.dart';
 import 'package:point_of_sale_flutter/core/core.dart';
-import 'package:point_of_sale_flutter/presentation/home/models/order_item.dart';
+import 'package:point_of_sale_flutter/presentation/home/models/product_quantity.dart';
 
 class PrintDataOutputs {
   PrintDataOutputs._init();
@@ -9,12 +9,16 @@ class PrintDataOutputs {
   static final PrintDataOutputs instance = PrintDataOutputs._init();
 
   Future<List<int>> printOrder(
-    List<OrderItem> products,
+    List<ProductQuantity> products,
     int totalQuantity,
     int totalPrice,
     String paymentMethod,
     int nominalBayar,
     String namaKasir,
+    int discount,
+    int tax,
+    int subTotal,
+    int normalPrice,
   ) async {
     List<int> bytes = [];
 
@@ -44,18 +48,18 @@ class PrintDataOutputs {
         styles: const PosStyles(bold: false, align: PosAlign.center));
 
     for (final product in products) {
-      bytes += generator.text(product.product.name,
+      bytes += generator.text(product.product.name!,
           styles: const PosStyles(align: PosAlign.left));
 
       bytes += generator.row([
         PosColumn(
           text:
-              '${product.product.price.currencyFormatRp} x ${product.quantity}',
+              '${product.product.price!.toIntegerFromText.currencyFormatRp} x ${product.quantity}',
           width: 8,
           styles: const PosStyles(align: PosAlign.left),
         ),
         PosColumn(
-          text: '${product.product.price * product.quantity}'
+          text: '${product.product.price!.toIntegerFromText * product.quantity}'
               .toIntegerFromText
               .currencyFormatRp,
           width: 4,
@@ -68,12 +72,38 @@ class PrintDataOutputs {
 
     bytes += generator.row([
       PosColumn(
+        text: 'Harga Normal',
+        width: 6,
+        styles: const PosStyles(align: PosAlign.left),
+      ),
+      PosColumn(
+        text: normalPrice.currencyFormatRp,
+        width: 6,
+        styles: const PosStyles(align: PosAlign.right),
+      ),
+    ]);
+
+    bytes += generator.row([
+      PosColumn(
+        text: 'Diskon',
+        width: 6,
+        styles: const PosStyles(align: PosAlign.left),
+      ),
+      PosColumn(
+        text: discount.currencyFormatRp,
+        width: 6,
+        styles: const PosStyles(align: PosAlign.right),
+      ),
+    ]);
+
+    bytes += generator.row([
+      PosColumn(
         text: 'Sub total',
         width: 6,
         styles: const PosStyles(align: PosAlign.left),
       ),
       PosColumn(
-        text: totalPrice.currencyFormatRp,
+        text: subTotal.currencyFormatRp,
         width: 6,
         styles: const PosStyles(align: PosAlign.right),
       ),
@@ -86,7 +116,20 @@ class PrintDataOutputs {
         styles: const PosStyles(align: PosAlign.left),
       ),
       PosColumn(
-        text: pajak.ceil().currencyFormatRp,
+        text: tax.ceil().currencyFormatRp,
+        width: 6,
+        styles: const PosStyles(align: PosAlign.right),
+      ),
+    ]);
+
+    bytes += generator.row([
+      PosColumn(
+        text: 'Total',
+        width: 6,
+        styles: const PosStyles(align: PosAlign.left),
+      ),
+      PosColumn(
+        text: totalPrice.currencyFormatRp,
         width: 6,
         styles: const PosStyles(align: PosAlign.right),
       ),

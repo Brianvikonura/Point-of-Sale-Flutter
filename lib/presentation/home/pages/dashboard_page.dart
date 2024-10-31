@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:point_of_sale_flutter/core/extensions/build_context_ext.dart';
 import 'package:point_of_sale_flutter/data/datasources/auth_local_datasource.dart';
 import 'package:point_of_sale_flutter/presentation/auth/login_page.dart';
+import 'package:point_of_sale_flutter/presentation/report/pages/report_page.dart';
 import 'package:point_of_sale_flutter/presentation/setting/pages/settings_page.dart';
 
 import '../../../core/assets/assets.gen.dart';
@@ -23,13 +24,9 @@ class _DashboardPageState extends State<DashboardPage> {
 
   final List<Widget> _pages = [
     const HomePage(),
-    // const Center(child: Text('This is page 1')),
-    const Center(child: Text('This is page 2')),
+    const ReportPage(),
     const Center(child: Text('This is page 3')),
-    // const Center(child: Text('This is page 4')),
     const SettingsPage(),
-    // const ManagePrinterPage(),
-    // const SettingsPage(),
   ];
 
   void _onItemTapped(int index) {
